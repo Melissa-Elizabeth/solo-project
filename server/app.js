@@ -46,8 +46,16 @@ app.get('/result', function(req, res) {
         query += " AND drool = 'low'";
       }
 
+      if (req.query.bark == 'low'){
+        query += " AND bark = 'low'";
+      }
+
       if (req.query.apartment == 'yes'){
         query += " AND apartment = 'yes'";
+      }
+
+      if (req.query.kids == 'yes'){
+        query += " AND kids = 'yes'";
       }
       client.query(query, function(err, result) {
         done();

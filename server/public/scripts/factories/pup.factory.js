@@ -4,7 +4,7 @@ myApp.factory('PupFactory', ['$http', function($http) {
 
 
    function result(desiredPetObject) {
-     var params = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, apartment: desiredPetObject.apartment};
+     var params = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids};
      console.log(params);
      $http({
        method: 'GET',

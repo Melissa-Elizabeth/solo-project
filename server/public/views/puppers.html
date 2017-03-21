@@ -1,16 +1,8 @@
 
-<div ng-app="MyApp" ng-controller="PupController">
-    <div class="row" ng-show="loginCtrl.showTouchID">
-        <div class="col-xs-12">
-            <button type="button" class="col-xs-12 btn btn-touch-id" data-ng-click="setTouch('hello')">TouchID Login</button>
-        </div>
-        <p>{{loginCtrl.showTouchID}}</p>
-    </div>
-</div>
 
 
 
-{{pc.desiredPetObject}}
+<!-- {{pc.desiredPetObject}} -->
 Does a high level of shedding bother you?
 
 <button ng-click="pc.desiredPetObject.shed='low'; pc.result(pc.desiredPetObject)">Yes</button>
@@ -21,15 +13,22 @@ How about drooling?
 <button ng-click="pc.desiredPetObject.drool='low'; pc.result(pc.desiredPetObject)">Yes</button>
 <button ng-click="pc.desiredPetObject.drool='high'; pc.result(pc.desiredPetObject)">No</button>
 
+Barking?
+
+<button ng-click="pc.desiredPetObject.bark='low'; pc.result(pc.desiredPetObject)">Yes</button>
+<button ng-click="pc.desiredPetObject.bark='high'; pc.result(pc.desiredPetObject)">No</button>
+
 Apartment friendly?
 
 <button ng-click="pc.desiredPetObject.apartment='yes'; pc.result(pc.desiredPetObject)">Yes</button>
 <button ng-click="pc.desiredPetObject.apartment='no'; pc.result(pc.desiredPetObject)">No</button>
 
-Barking?
 
-<button ng-click="pc.desiredPetObject.bark='low'; pc.result(pc.desiredPetObject)">Yes</button>
-<button ng-click="pc.desiredPetObject.bark='high'; pc.result(pc.desiredPetObject)">No</button>
+
+Kids?
+
+<button ng-click="pc.desiredPetObject.kids='yes'; pc.result(pc.desiredPetObject)">Yes</button>
+<button ng-click="pc.desiredPetObject.kids='no'; pc.result(pc.desiredPetObject)">No</button>
 
 
 
