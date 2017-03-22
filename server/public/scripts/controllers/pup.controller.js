@@ -6,7 +6,7 @@ myApp.controller('PupController', ['PupFactory', function(PupFactory){
 self.dogs = PupFactory.dogs;
 
 self.result=PupFactory.result;
-
+// self.showHideTest = false;
 
 }]);
 

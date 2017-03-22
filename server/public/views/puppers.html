@@ -5,41 +5,40 @@
 <!-- {{pc.desiredPetObject}} -->
 Does a high level of shedding bother you?
 
-<button ng-click="pc.desiredPetObject.shed='low'; pc.result(pc.desiredPetObject)">Yes</button>
-<button ng-click="pc.desiredPetObject.shed='high'; pc.result(pc.desiredPetObject)">No</button>
+<button ng-click="pc.desiredPetObject.shed='low'">Yes</button>
+<button ng-click="pc.desiredPetObject.shed='high'">No</button>
 
 How about drooling?
 
-<button ng-click="pc.desiredPetObject.drool='low'; pc.result(pc.desiredPetObject)">Yes</button>
-<button ng-click="pc.desiredPetObject.drool='high'; pc.result(pc.desiredPetObject)">No</button>
+<button ng-click="pc.desiredPetObject.drool='low'">Yes</button>
+<button ng-click="pc.desiredPetObject.drool='high'">No</button>
 
 Barking?
 
-<button ng-click="pc.desiredPetObject.bark='low'; pc.result(pc.desiredPetObject)">Yes</button>
-<button ng-click="pc.desiredPetObject.bark='high'; pc.result(pc.desiredPetObject)">No</button>
+<button ng-click="pc.desiredPetObject.bark='low'">Yes</button>
+<button ng-click="pc.desiredPetObject.bark='high'">No</button>
 
 Apartment friendly?
 
-<button ng-click="pc.desiredPetObject.apartment='yes'; pc.result(pc.desiredPetObject)">Yes</button>
-<button ng-click="pc.desiredPetObject.apartment='no'; pc.result(pc.desiredPetObject)">No</button>
+<button ng-click="pc.desiredPetObject.apartment='yes'">Yes</button>
+<button ng-click="pc.desiredPetObject.apartment='no'">No</button>
 
 
 
 Kids?
 
-<button ng-click="pc.desiredPetObject.kids='yes'; pc.result(pc.desiredPetObject)">Yes</button>
-<button ng-click="pc.desiredPetObject.kids='no'; pc.result(pc.desiredPetObject)">No</button>
+<button ng-click="pc.desiredPetObject.kids='yes'">Yes</button>
+<button ng-click="pc.desiredPetObject.kids='no'">No</button>
 
 
+<button ng-model="showHideTest" ng-value="true" ng-click="pc.result(pc.desiredPetObject)">Results</button>
 
+<!-- {{pc.dogs.list}} -->
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
+
 
 <tr ng-repeat="pup in pc.dogs.list">
-    <td>{{pup.name}}</td>
+    <td ng-init="googs = 'views/corgi.html'"><a ng-href="{{googs}}">{{pup.name}}</a></td>
+    <td ng-init="googs = 'views/corgi.html"><a ng-href="{{googs}}"><img ng-src="{{pup.pics}}" /></a></td>
 </tr>
 </table>

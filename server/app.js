@@ -36,7 +36,7 @@ app.get('/result', function(req, res) {
       console.log(err);
       res.sendStatus(500);
     }else{
-      var query = "SELECT name FROM dogs WHERE id > 0";
+      var query = "SELECT name, pics FROM dogs WHERE id > 0";
 
       if (req.query.shed == 'low'){
         query += " AND shed = 'low'";
