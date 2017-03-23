@@ -36,7 +36,7 @@ app.get('/result', function(req, res) {
       console.log(err);
       res.sendStatus(500);
     }else{
-      var query = "SELECT name, pics FROM dogs WHERE id > 0";
+      var query = "SELECT id, name, pics FROM dogs WHERE id > 0";
 
       if (req.query.shed == 'low'){
         query += " AND shed = 'low'";
@@ -73,6 +73,29 @@ app.get('/result', function(req, res) {
   });
 });
 
+app.get('/result/:id', function(req, res) {
+  console.log('hit my route', req.query);
+  pool.connect(function(err, client, done) {
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }else {
+      var query = "SELECT about FROM dogs WHERE id = req.query.id";
+      client.query(query, function(err, result) {
+        done();
+
+        if(err){
+          console.log(err);
+          res.sendStatus(500);
+        }else{
+          console.log(result);
+          res.status(200).send(result.rows);
+        }
+      });
+
+    }
+  });
+});
 
 
 

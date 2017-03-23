@@ -18,11 +18,22 @@ myApp.factory('PupFactory', ['$http', function($http) {
    }
 
 
+   function getPup() {
+     $http({
+       method: 'GET',
+       url: '/result'
+     }).then(function(response) {
+       console.log(response.data);
+       dogs.list = response.data;
+
+     });
+   }
 
 
 return {
   dogs: dogs,
-  result: result
+  result: result,
+  getPup: getPup
 
 };
 }]);

@@ -7,11 +7,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/puppers.html',
       controller: 'PupController',
       controllerAs: 'pc'
-    // })
-    // .when('/todoList', {
-    //   templateUrl: '/views/todoList.html',
-    //   controller: 'TaskController',
-    //   controllerAs: 'tc'
+    })
+    .when('/views/:id', {
+      templateUrl: '/views/solopup.html',
+      controller: 'SoloPupController',
+      controllerAs: 'spc'
     // })
     // .when('/about', {
     //   templateUrl: '/views/about.html',

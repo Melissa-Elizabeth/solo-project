@@ -3,42 +3,67 @@
 
 
 <!-- {{pc.desiredPetObject}} -->
-Does a high level of shedding bother you?
-
-<button ng-click="pc.desiredPetObject.shed='low'">Yes</button>
-<button ng-click="pc.desiredPetObject.shed='high'">No</button>
-
-How about drooling?
-
-<button ng-click="pc.desiredPetObject.drool='low'">Yes</button>
-<button ng-click="pc.desiredPetObject.drool='high'">No</button>
-
-Barking?
-
-<button ng-click="pc.desiredPetObject.bark='low'">Yes</button>
-<button ng-click="pc.desiredPetObject.bark='high'">No</button>
-
-Apartment friendly?
-
-<button ng-click="pc.desiredPetObject.apartment='yes'">Yes</button>
-<button ng-click="pc.desiredPetObject.apartment='no'">No</button>
 
 
 
-Kids?
+<div ng-show="pc.question1">
+    Does a high level of shedding bother you?
 
-<button ng-click="pc.desiredPetObject.kids='yes'">Yes</button>
-<button ng-click="pc.desiredPetObject.kids='no'">No</button>
+    <button ng-click="pc.next1('low')">Yes</button>
+    <button ng-click="pc.next1('high')">No</button>
+    <br><br>
+    <img ng-src="../assets/shed.jpg">
+</div>
+
+<div ng-show="pc.question2">
+    How about drooling?
+
+    <button ng-click="pc.next2('low')">Yes</button>
+    <button ng-click="pc.next2('high')">No</button>
+    <br><br>
+    <img ng-src="../assets/drool.jpg">
+</div>
+
+<div ng-show="pc.question3">
+    Barking?
+
+    <button ng-click="pc.next3('low')">Yes</button>
+    <button ng-click="pc.next3('high')">No</button>
+    <br><br>
+    <img ng-src="../assets/bark.png">
+</div>
+
+<div ng-show="pc.question4">
+    Apartment friendly?
+
+    <button ng-click="pc.next4('yes')">Yes</button>
+    <button ng-click="pc.next4('no')">No</button>
+    <br><br>
+    <img ng-src="../assets/apartment.jpg">
+</div>
 
 
-<button ng-model="showHideTest" ng-value="true" ng-click="pc.result(pc.desiredPetObject)">Results</button>
+<div ng-show="pc.question5">
+    Kids?
+
+    <button ng-click="pc.next5('yes')">Yes</button>
+    <button ng-click="pc.next5('no')">No</button>
+    <br><br>
+    <img ng-src="../assets/kids.jpg">
+</div>
+
+
+<!-- <button ng-model="showHideTest" ng-value="true" ng-click="pc.result(pc.desiredPetObject)">Results</button> -->
 
 <!-- {{pc.dogs.list}} -->
 <table>
 
 
-<tr ng-repeat="pup in pc.dogs.list">
-    <td ng-init="googs = 'views/corgi.html'"><a ng-href="{{googs}}">{{pup.name}}</a></td>
-    <td ng-init="googs = 'views/corgi.html"><a ng-href="{{googs}}"><img ng-src="{{pup.pics}}" /></a></td>
-</tr>
+    <tr ng-repeat="pup in pc.dogs.list">
+        <td>
+
+        </td>
+        <td><a ng-href="#!views/{{pup.id}}">{{pup.name}}</a></td>
+        <td><a ng-href="#!views/{{pup.id}}"><img ng-src="{{pup.pics}}" /></a></td>
+    </tr>
 </table>
