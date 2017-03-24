@@ -73,26 +73,27 @@ app.get('/result', function(req, res) {
   });
 });
 
-app.get('/result/:id', function(req, res) {
-  console.log('hit my route', req.query);
-  pool.connect(function(err, client, done) {
-    if(err){
-      console.log(err);
+app.get('/dog/:id', function(req, res){
+  var dogId = req.params.id;
+  // This will be replaced with a SELECT statement to SQL
+  console.log(req.query);
+  pool.connect(function(errorConnectingToDatabase, client, done){
+    if(errorConnectingToDatabase) {
+      // There was an error connecting to the database
+      console.log('Error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
-    }else {
-      var query = "SELECT about FROM dogs WHERE id = req.query.id";
-      client.query(query, function(err, result) {
+    } else {
+      // We connected to the database!!!
+      // Now, we're gonna' git stuff!!!!!
+      client.query('SELECT name, about FROM dogs WHERE id=$1;', [dogId], function(errorMakingQuery, result){
         done();
-
-        if(err){
-          console.log(err);
+        if(errorMakingQuery) {
+          console.log('Error making the database query: ', errorMakingQuery);
           res.sendStatus(500);
-        }else{
-          console.log(result);
-          res.status(200).send(result.rows);
+        } else {
+          res.send(result.rows);
         }
       });
-
     }
   });
 });

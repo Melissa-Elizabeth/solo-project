@@ -1,7 +1,7 @@
 
-var myApp = angular.module('PupApp', ['ngRoute']);
+var PupApp = angular.module('PupApp', ['ngRoute']);
 
-myApp.config(['$routeProvider', function($routeProvider) {
+PupApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: '/views/puppers.html',
@@ -12,13 +12,13 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/solopup.html',
       controller: 'SoloPupController',
       controllerAs: 'spc'
-    // })
-    // .when('/about', {
-    //   templateUrl: '/views/about.html',
-    //   controller: 'AboutController',
-    //   controllerAs: 'ac'
-    // })
-    // .otherwise({
-    //   redirectTo: 'home'
+    })
+    .when('/home', {
+      templateUrl: '/views/home.html',
+      controller: 'HomeController',
+      controllerAs: 'hc'
+    })
+    .otherwise({
+      redirectTo: 'home'
     });
 }]);

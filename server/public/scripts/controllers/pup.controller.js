@@ -1,17 +1,23 @@
 
-myApp.controller('PupController', ['PupFactory', function(PupFactory){
+PupApp.controller('PupController', ['PupFactory', function(PupFactory){
 
   var self = this;
 
   self.dogs = PupFactory.dogs;
 
   self.result=PupFactory.result;
+
+
+  self.desiredPetObject=PupFactory.desiredPetObject;
+
+  if(self.desiredPetObject.shed===undefined){
   self.question1 = true;
   self.question2 = false;
   self.question3 = false;
   self.question4 = false;
   self.question5 = false;
-  self.desiredPetObject={};
+}
+
 
 
   self.next1 = function(answer) {
@@ -43,6 +49,12 @@ myApp.controller('PupController', ['PupFactory', function(PupFactory){
     self.result(self.desiredPetObject);
     self.question5 = false;
   };
+
+  self.getPup=PupFactory.getPup;
+
+  // self.soloPup = function(){
+  //   self.getPup(self.dogs.id);
+  // };
 
 }]);
 
