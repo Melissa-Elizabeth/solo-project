@@ -1,5 +1,5 @@
-
-PupApp.controller('SoloPupController', ['PupFactory', '$routeParams', function(PupFactory, $routeParams){
+angular.module('slideShowExample', ['simple-slideshow']);
+PupApp.controller('SoloPupController', ['PupFactory', '$routeParams',  function(PupFactory, $routeParams){
 
   var self = this;
 
@@ -9,11 +9,5 @@ PupApp.controller('SoloPupController', ['PupFactory', '$routeParams', function(P
 
 self.currentPup=PupFactory.currentPup;
   self.getPup=PupFactory.getPup($routeParams.id);
-
-
-
-
-
-
 
 }]);

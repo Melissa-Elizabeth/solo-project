@@ -7,6 +7,9 @@ PupApp.controller('PupController', ['PupFactory', function(PupFactory){
 
   self.result=PupFactory.result;
 
+self.header = "";
+self.navbar = "";
+self.results = "";
 
   self.desiredPetObject=PupFactory.desiredPetObject;
 
@@ -16,6 +19,9 @@ PupApp.controller('PupController', ['PupFactory', function(PupFactory){
   self.question3 = false;
   self.question4 = false;
   self.question5 = false;
+  self.header = false;
+  self.navbar = false;
+  self.results = false;
 }
 
 
@@ -48,6 +54,9 @@ PupApp.controller('PupController', ['PupFactory', function(PupFactory){
     self.desiredPetObject.kids=answer;
     self.result(self.desiredPetObject);
     self.question5 = false;
+    self.header= true;
+    self.navbar = true;
+    self.results = true;
   };
 
   self.getPup=PupFactory.getPup;

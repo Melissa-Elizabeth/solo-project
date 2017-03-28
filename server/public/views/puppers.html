@@ -2,69 +2,246 @@
 
 
 
-<!-- {{pc.desiredPetObject}} -->
+
+
+
+<style>
+
+body {
+  background-color: #F4F190;
+}
+
+.wrapper {
+  background-color: #FFF;
+  width: 695px;
+  height: 495px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+  border-radius: 8px;
+  box-shadow: 0px 0px 29px rgba(227, 84, 0, 0.6);
+  -webkit-box-shadow: 0px 0px 29px rgba(227, 84, 0, 0.6);
+  -moz-box-shadow: 0px 0px 29px rgba(227, 84, 0, 0.6);
+}
+
+.main-container {
+  height: 495px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-cl {
+  margin: 0 20px 0 0;
+  flex: 1;
+  z-index: 98;
+}
+
+.right-cl {
+  margin: 0 20px 0 0px;
+  flex: 1;
+  z-index: 98;
+}
+
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 35px;
+  color: #9B9B9B;
+  letter-spacing: 1.98px;
+  padding-bottom: 10px;
+}
+
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #9B9B9B;
+  letter-spacing: 1px;
+}
+
+.question {
+  background-color: #FF7371;
+  border: none;
+  padding: 20px 50px;
+  border-radius: 100px;
+  display: inline;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #FFF;
+  letter-spacing: 1.98px;
+  margin-top: 50px;
+}
+
+.header {
+  width: 1000px !important;
+}
+
+.container {
+  height: 200px;
+  width: 300px;
+  display: inline-grid;
+}
+</style>
+<!-- end styling -->
+
+<br>
 
 
 
 <div ng-show="pc.question1">
-    Does a high level of shedding bother you?
+  <div class="wrapper">
+    <div class="box">
+      <div class="main-container">
+        <div class="left-cl">
 
-    <button ng-click="pc.next1('low')">Yes</button>
-    <button ng-click="pc.next1('high')">No</button>
-    <br><br>
-    <img ng-src="../assets/shed.jpg">
+          <img ng-src="../assets/shed.jpg">
+        </div>
+
+        <div class="right-cl">
+
+          <h2>Do you find excessive shedding bothersome?</h2>
+
+          <button class="question" ng-click="pc.next1('low')">Yes</button>
+          <button class="question" ng-click="pc.next1('high')">No </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div ng-show="pc.question2">
-    How about drooling?
+  <div class="wrapper">
+    <div class="box">
+      <div class="main-container">
+        <div class="left-cl">
 
-    <button ng-click="pc.next2('low')">Yes</button>
-    <button ng-click="pc.next2('high')">No</button>
-    <br><br>
-    <img ng-src="../assets/drool.jpg">
+          <img ng-src="../assets/drool.jpg">
+        </div>
+        <div class="right-cl">
+          <h2>How about excessive slobber?</h2>
+
+          <button class="question" ng-click="pc.next2('low')"> Yes</button>
+          <button class="question" ng-click="pc.next2('high')">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div ng-show="pc.question3">
-    Barking?
+  <div class="wrapper">
+    <div class="box">
+      <div class="main-container">
+        <div class="left-cl">
 
-    <button ng-click="pc.next3('low')">Yes</button>
-    <button ng-click="pc.next3('high')">No</button>
-    <br><br>
-    <img ng-src="../assets/bark.png">
+          <img ng-src="../assets/bark.jpg">
+        </div>
+        <div class="right-cl">
+          <h2>Is too much barking irksome?</h2>
+
+          <button class="question" ng-click="pc.next3('low')"> Yes</button>
+          <button class="question" ng-click="pc.next3('high')">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div ng-show="pc.question4">
-    Apartment friendly?
+  <div class="wrapper">
+    <div class="box">
+      <div class="main-container">
+        <div class="left-cl">
 
-    <button ng-click="pc.next4('yes')">Yes</button>
-    <button ng-click="pc.next4('no')">No</button>
-    <br><br>
-    <img ng-src="../assets/apartment.jpg">
+          <img ng-src="../assets/apartment.jpg">
+        </div>
+        <div class="right-cl">
+          <h2>Would you like an apartment-friendly companion?</h2>
+
+          <button class="question" ng-click="pc.next4('yes')"> Yes</button>
+          <button class="question" ng-click="pc.next4('no')">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
 
 <div ng-show="pc.question5">
-    Kids?
+  <div class="wrapper">
+    <div class="box">
+      <div class="main-container">
+        <div class="left-cl">
 
-    <button ng-click="pc.next5('yes')">Yes</button>
-    <button ng-click="pc.next5('no')">No</button>
-    <br><br>
-    <img ng-src="../assets/kids.jpg">
+          <img ng-src="../assets/kids.jpg" class= "img-rounded">
+        </div>
+        <div class="right-cl">
+          <h2>Will your new friend be living or interacting with children?</h2>
+
+          <button class="question" ng-click="pc.next5('yes')"> Yes</button>
+          <button class="question" ng-click="pc.next5('no')">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<!-- <button ng-model="showHideTest" ng-value="true" ng-click="pc.result(pc.desiredPetObject)">Results</button> -->
-
-<!-- {{pc.dogs.list}} -->
-<table>
 
 
-    <tr ng-repeat="pup in pc.dogs.list">
+<nav ng-show="pc.navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand"></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+<br>
+<div ng-show="pc.header">
+
+  <center><img class="header" ng-src="../assets/dog-header.jpg"></center>
+
+</div>
+<br><br>
+<div class="row">
 
 
+<div ng-repeat="pup in pc.dogs.list">
 
-        <td><a ng-href="#!views/{{pup.id}}">{{pup.name}}</a></td>
-        <td><a ng-href="#!views/{{pup.id}}"><img ng-src="{{pup.pics}}" /></a></td>
 
-    </tr>
-</table>
+  <!-- <div class="container"> -->
+    <!-- <div class="row"> -->
+      <ul class="col-sm-4"
+      style="list-style:none;">
+      <li class="span4">
+        <div>
+          <img ng-src="{{pup.pics}}" alt="ALT NAME">
+          <p align="center"> <a ng-href="#!views/{{pup.id}}" class="btn btn-primary btn-block">{{pup.name}}</a></p>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+  </div>
+<!-- </div> -->
+<!-- </div> -->
+<br><br><br>
+<center>
+  <div ng-show="pc.results"> <a ng-href="#!views/{{pup.id}}" class="btn btn-primary">Save your results</a></div>  </center>
+
+
+  <!-- <a class="resultPupName" ng-href="#!views/{{pup.id}}">{{pup.name}}</a>
+  <a ng-href="#!views/{{pup.id}}"><img class="resultPups" ng-src="{{pup.pics}}"></a> -->

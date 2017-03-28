@@ -85,7 +85,7 @@ app.get('/dog/:id', function(req, res){
     } else {
       // We connected to the database!!!
       // Now, we're gonna' git stuff!!!!!
-      client.query('SELECT name, about FROM dogs WHERE id=$1;', [dogId], function(errorMakingQuery, result){
+      client.query('SELECT * FROM dogs WHERE id=$1;', [dogId], function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Error making the database query: ', errorMakingQuery);

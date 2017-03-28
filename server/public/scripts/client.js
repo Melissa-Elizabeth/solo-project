@@ -3,7 +3,7 @@ var PupApp = angular.module('PupApp', ['ngRoute']);
 
 PupApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/', {
+    .when('/puppers', {
       templateUrl: '/views/puppers.html',
       controller: 'PupController',
       controllerAs: 'pc'
@@ -18,7 +18,8 @@ PupApp.config(['$routeProvider', function($routeProvider) {
       controller: 'HomeController',
       controllerAs: 'hc'
     })
+
     .otherwise({
-      redirectTo: 'home'
+      redirectTo: '/puppers'
     });
 }]);
