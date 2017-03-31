@@ -1,49 +1,123 @@
-
-
-
-
 <style>
-body {
-  background-color: #F4F190;
-}
-img{
-  height: auto;
-  width: auto;
+  .navbar {
+  background-color: #ff704d;
+color: white;
 }
 
-@font-face {
-    font-family: "PuppyBellies";
-    src: url(../assets/PuppyBellies.ttf);
+.btn{
+  background-color: #ff704d;
 }
-
-h1 {
-  font-family: "PuppyBellies";
-  font-size: 48px;
-}
-
-.jumbotron {
-background-color: #ff704d;
-color: black;
-}
-
-  </style>
+</style>
 
 
 
 
-<!-- First Container -->
-<div class="container-fluid bg-1 text-center">
-  <div class="jumbotron">
-    <b><h1>Breed all About it</h1></b>
+
+
+
+
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+
+ <div class="navbar-header">
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+     <span class="sr-only">Toggle navigation</span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+   </button>
+ <img class= "logoHead" ng-src="../assets/breedhead3.png">
+ </div>
+
+
+ <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+   <ul class="nav navbar-nav">
+     <li><a href="#">Breeds</a></li>
+     <li><a href="#">Owners</a></li>
+      <li><a href="#">Resources</a></li>
+   </ul>
+   <form class="navbar-form navbar-left">
+     <div class="form-group">
+       <input type="text" class="form-control" placeholder="Search">
+     </div>
+     <button type="submit" class="btn btn-default">Submit</button>
+   </form>
+   <ul class="nav navbar-nav navbar-right">
+     <li ng-click="pc.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</li><br>
+     <li>
+       {{pc.secretData}}
+     </li>
+   </ul>
+
+     <!-- </li> -->
+
+ </div>
 </div>
 
-    <img ng-src="../assets/dogsil-8.png" class="animated slideInUp">
 
-<img ng-src="../assets/dogsil-4.png" class="animated slideInRight">
+</nav>
 
-<img ng-src="../assets/dogsil-7.png" class="animated slideInLeft">
 
-<img ng-src="../assets/dogsil-5.png" class="animated slideInDown">
-<br>
-<a class="btn btn-default" ng-href="#!/puppers" role="button">Find your new best friend</a>
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="business-header">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-12">
+                   <h1 class="tagline">Welcome to Breed All About It</h1>
+               </div>
+           </div>
+       </div>
+   </header>
+
+   <!-- Page Content -->
+   <div class="container">
+
+       <hr>
+
+       <div class="row">
+           <div class="col-sm-8">
+
+               <p>Breed All About It helps connect potential dog owners with their perfect fit companion.......blah blah </p>
+               <p></p>
+
+              <p>
+                   <a class="btn btn-default btn-lg" href="#!/puppers">Find your new best friend &raquo;</a>
+               </p>
+           </div>
+       </div>
+       <!-- < /.row   -->
+
+       <hr>
+
+       <div class="row">
+           <div class="col-sm-4">
+               <img class="img-circle img-responsive img-center" src="../assets/sheltiekid.jpg"  alt="">
+               <h2>Testimonial #1</h2>
+               <p></p>
+           </div>
+           <div class="col-sm-4">
+               <img class="img-circle img-responsive img-center" ng-src="../assets/engage.jpg" alt="">
+               <h2>Testimonial #2</h2>
+               <p></p>
+           </div>
+           <div class="col-sm-4">
+               <img class="img-circle img-responsive img-center" src="../assets/mullet.jpg" alt="">
+               <h2>Testimonial #3</h2>
+               <p></p>
+           </div>
+       </div>
+       <!-- /.row -->
+
+       <hr>
 </div>

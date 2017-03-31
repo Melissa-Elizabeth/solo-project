@@ -3,11 +3,12 @@
 <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand"></a>
+      
+       <img class= "logoHead" ng-src="../assets/breedhead3.png">
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-home"></span> Explore the {{pup.name}} community</a></li>
-      <li><a href="..#!/puppers.html"><span class="glyphicon glyphicon-step-backward"></span>Back</a></li>
+      <li><a ng-href="#!/corgi"><span class="glyphicon glyphicon-home"></span> Explore the {{pup.name}} community</a></li>
+      <li><a ng-href="#!/puppers"><span class="glyphicon glyphicon-step-backward"></span>Back</a></li>
     </ul>
   </div>
 </nav>
@@ -20,14 +21,33 @@
   background-color: #ff704d;
 color: white;
 }
-
 .stats{
   height: auto;
 width: auto;
 }
+img {
+  height: 300px;
+  width: 400px;
+  /*padding-right: 10px;*/
+}
+
+.card-block2{
+  padding-left: 15px;
+}
+
+.row-offcanvas{
+   transform: translate(10px, 100px);
+}
+
+.featurette-image{
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 
 </style>
+
+
 <div class="header">
   <div class="jumbotron">
     <!-- <img class="pupHead" ng-src="{{pup.head_pic}}"> -->
@@ -54,47 +74,44 @@ width: auto;
 
     <!-- Page Content -->
     <div class="container">
+      <hr class="featurette-divider">
 
-        <hr class="featurette-divider">
+      <!-- First Featurette -->
+      <div class="featurette" >
+        <img class="featurette-image img-rounded img-responsive pull-right" ng-src="{{pup.pic1}}">
 
-        <!-- First Featurette -->
-        <div class="featurette" >
-            <img class="featurette-image img-rounded img-responsive pull-right" ng-src="{{pup.pic1}}">
+        <div class="card text-left" style="width: 70rem;">
+          <div class="card-block">
+            <p class="lead text-justify">{{pup.about}}</p>
+          </div>
+        </div>
+      </div>
 
-            <div class="card text-left" style="width: 70rem;">
-  <div class="card-block">
-<p class="lead text-justify">{{pup.about}}</p>
-  </div>
-</div>
-</div>
-
-
-
-
-        <hr class="featurette-divider">
+<hr class="featurette-divider">
 <br>
         <!-- Second Featurette -->
         <div class="featurette">
             <img class="featurette-image img-rounded img-responsive pull-left" ng-src="{{pup.pic2}}">
 
-            <div class="card text-right text-responsive" style="width: 110rem height:60rem;">
-  <div class="card-block">
-<p class="lead">{{pup.about1}}</p>
+            <div class="card text-right" style="width: 70rem height:50rem;">
+  <div class="card-block2">
+<p class="lead text-justify">{{pup.about1}}</p>
   </div>
 </div>
 </div>
 
+<hr class="featurette-divider">
+  <br>
 
-        <br><br><br><br>
-        <hr class="featurette-divider">
+
 
         <!-- Third Featurette -->
 
-
+  <div class="featurette">
             <img class="featurette-image img-rounded img-responsive pull-right" ng-src="{{pup.pic3}}">
 
-            <div class="card text-left" style="width: 70rem;">
-  <div class="card-block">
+            <div class="card pull-right" style="width: 50rem;">
+
 <p class="lead text-justify">{{pup.about2}}</p>
   </div>
 </div>

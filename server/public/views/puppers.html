@@ -4,94 +4,37 @@
 
 
 
-
 <style>
-
-body {
+body{
   background-color: #F4F190;
 }
+.logoHead{
 
-.wrapper {
-  background-color: #FFF;
-  width: 695px;
-  height: 495px;
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-
-  border-radius: 8px;
-  box-shadow: 0px 0px 29px rgba(227, 84, 0, 0.6);
-  -webkit-box-shadow: 0px 0px 29px rgba(227, 84, 0, 0.6);
-  -moz-box-shadow: 0px 0px 29px rgba(227, 84, 0, 0.6);
+  height: 50px;
+  width: 400px;
 }
-
-.main-container {
-  height: 495px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.navbar {
+background-color: #FF7371;
 }
-
-.left-cl {
-  margin: 0 20px 0 0;
-  flex: 1;
-  z-index: 98;
-}
-
-.right-cl {
-  margin: 0 20px 0 0px;
-  flex: 1;
-  z-index: 98;
-}
-
-
-h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  font-size: 35px;
-  color: #9B9B9B;
-  letter-spacing: 1.98px;
-  padding-bottom: 10px;
-}
-
-
-p {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  font-size: 10px;
-  color: #9B9B9B;
-  letter-spacing: 1px;
-}
-
-.question {
+.btn{
   background-color: #FF7371;
-  border: none;
-  padding: 20px 50px;
-  border-radius: 100px;
-  display: inline;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #FFF;
-  letter-spacing: 1.98px;
-  margin-top: 50px;
 }
 
-.header {
-  width: 1000px !important;
-}
-
-.container {
-  height: 200px;
-  width: 300px;
-  display: inline-grid;
-}
 </style>
 <!-- end styling -->
 
-<br>
 
+
+
+<nav ng-show="pc.logoHead" class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img class= "logoHead" ng-src="../assets/breedhead3.png">
+      </a>
+    </div>
+  </div>
+</nav>
 
 
 <div ng-show="pc.question1">
@@ -100,20 +43,23 @@ p {
       <div class="main-container">
         <div class="left-cl">
 
-          <img ng-src="../assets/shed.jpg">
+          <img ng-src="../assets/shed.jpg" class="questionpic">
         </div>
 
         <div class="right-cl">
 
-          <h2>Do you find excessive shedding bothersome?</h2>
+          <h2 class="questions">Do you find excessive shedding bothersome?</h2>
 
-          <button class="question" ng-click="pc.next1('low')">Yes</button>
-          <button class="question" ng-click="pc.next1('high')">No </button>
+
+            <button class="question" ng-click="pc.next1('low')">Yes</button>
+            <button class="question" ng-click="pc.next1('high')">No </button>
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <div ng-show="pc.question2">
   <div class="wrapper">
@@ -121,10 +67,10 @@ p {
       <div class="main-container">
         <div class="left-cl">
 
-          <img ng-src="../assets/drool.jpg">
+          <img ng-src="../assets/drool.jpg" class="questionpic">
         </div>
         <div class="right-cl">
-          <h2>How about excessive slobber?</h2>
+          <h2 class="questions">How about excessive slobber?</h2>
 
           <button class="question" ng-click="pc.next2('low')"> Yes</button>
           <button class="question" ng-click="pc.next2('high')">No</button>
@@ -135,16 +81,17 @@ p {
   </div>
 </div>
 
+
 <div ng-show="pc.question3">
   <div class="wrapper">
     <div class="box">
       <div class="main-container">
         <div class="left-cl">
 
-          <img ng-src="../assets/bark.jpg">
+          <img ng-src="../assets/bark.jpg" class="questionpic">
         </div>
         <div class="right-cl">
-          <h2>Is too much barking irksome?</h2>
+          <h2 class="questions">Is too much barking irksome?</h2>
 
           <button class="question" ng-click="pc.next3('low')"> Yes</button>
           <button class="question" ng-click="pc.next3('high')">No</button>
@@ -155,13 +102,14 @@ p {
   </div>
 </div>
 
+
 <div ng-show="pc.question4">
   <div class="wrapper">
     <div class="box">
       <div class="main-container">
         <div class="left-cl">
 
-          <img ng-src="../assets/apartment.jpg">
+          <img ng-src="../assets/apartment.jpg" class="questionpic">
         </div>
         <div class="right-cl">
           <h2>Would you like an apartment-friendly companion?</h2>
@@ -175,13 +123,14 @@ p {
   </div>
 </div>
 
+
 <div ng-show="pc.question5">
   <div class="wrapper">
     <div class="box">
       <div class="main-container">
         <div class="left-cl">
 
-          <img ng-src="../assets/kids.jpg" class= "img-rounded">
+          <img ng-src="../assets/kids.jpg" class="questionpic">
         </div>
         <div class="right-cl">
           <h2>Will your new friend be living or interacting with children?</h2>
@@ -195,53 +144,131 @@ p {
   </div>
 </div>
 
+<div ng-show="pc.question6">
+  <div class="wrapper">
+    <div class="box">
+      <div class="main-container">
+        <div class="left-cl">
+
+          <img ng-src="../assets/train.jpeg" class="questionpic">
+        </div>
+        <div class="right-cl">
+          <h2>Is trainability important to you?</h2>
+
+          <button class="question" ng-click="pc.next6('easy')"> Yes</button>
+          <button class="question" ng-click="pc.next6('hard')">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+end of questions -->
 
 
 
-<nav ng-show="pc.navbar">
+<!-- start results -->
+
+<!-- Show navbar -->
+<!-- <nav ng-show="pc.navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand"></a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </div> -->
+
+    <!-- buttons on navbar -->
+<!-- <ul class="nav navbar-nav navbar-left">
+      <img class="logoHead" ng-src="../assets/breedhead3.png">
+    </ul>
+  <ul class="nav navbar-nav navbar-right">
+      <li ng-click="pc.login()"><span class="glyphicon glyphicon-log-in"></span> Login</li>
+      <li ng-click="pc.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</li><br>
+      <li>
+        {{pc.secretData}}
+      </li>
     </ul>
   </div>
+</nav> -->
+
+
+
+ <nav ng-show="pc.navbar" class="navbar navbar-default">
+<div class="container-fluid">
+
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  <img class= "logoHead" ng-src="../assets/breedhead3.png">
+  </div>
+
+
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+  <li><a href="#">Link</a></li>
+
+    </ul>
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <!-- <li ng-click="pc.login()"><span class="glyphicon glyphicon-log-in"></span> Login</li> -->
+      <li ng-click="pc.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</li><br>
+      <li>
+        {{pc.secretData}}
+      </li>
+
+      <!-- </li> -->
+    </ul>
+  </div>
+</div>
+
+
 </nav>
 <br>
+
+<!-- show header -->
 <div ng-show="pc.header">
-
-  <center><img class="header" ng-src="../assets/dog-header.jpg"></center>
-
+  <center><img class="resultHeader" ng-src="../assets/dog-header.jpg"></center>
 </div>
 <br><br>
-<div class="row">
+
+
+<!-- reveal pup results -->
+<center>
+<!-- <div class="container">
+
+
+<div class="row"> -->
 
 
 <div ng-repeat="pup in pc.dogs.list">
 
+    <div class="col-sm-4">
+    <div class="span4">
 
-  <!-- <div class="container"> -->
-    <!-- <div class="row"> -->
-      <ul class="col-sm-4"
-      style="list-style:none;">
-      <li class="span4">
-        <div>
-          <img ng-src="{{pup.pics}}" alt="ALT NAME">
-          <p align="center"> <a ng-href="#!views/{{pup.id}}" class="btn btn-primary btn-block">{{pup.name}}</a></p>
-        </div>
-      </li>
-    </ul>
 
+        <img ng-src="{{pup.pics}}" class="resultPics">
+        <p align="center"> <a ng-href="#!views/{{pup.id}}" class="btn btn-primary btn-block">{{pup.name}}</a></p>
+
+    </div>
   </div>
-  </div>
-<!-- </div> -->
-<!-- </div> -->
+
+</div>
+<!-- </div>
+</div> -->
+</center>
+
+
 <br><br><br>
 <center>
-  <div ng-show="pc.results"> <a ng-href="#!views/{{pup.id}}" class="btn btn-primary">Save your results</a></div>  </center>
-
-
-  <!-- <a class="resultPupName" ng-href="#!views/{{pup.id}}">{{pup.name}}</a>
-  <a ng-href="#!views/{{pup.id}}"><img class="resultPups" ng-src="{{pup.pics}}"></a> -->
+   <div ng-show="pc.results"> <a ng-click="pc.saveResults()" class="btn btn-primary">Save your results</a></div> </center>

@@ -1,5 +1,6 @@
 
-var PupApp = angular.module('PupApp', ['ngRoute']);
+var PupApp = angular.module('PupApp',  ['ngRoute',
+'firebase', 'ngFileUpload']);
 
 PupApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -18,8 +19,18 @@ PupApp.config(['$routeProvider', function($routeProvider) {
       controller: 'HomeController',
       controllerAs: 'hc'
     })
+    .when('/welcome', {
+      templateUrl: '/views/welcome.html',
+      controller: 'WelcomeController',
+      controllerAs: 'wc'
+    })
+    .when('/corgi', {
+      templateUrl: '/views/corgi.html',
+      controller: 'CorgiController',
+      controllerAs: 'cc'
+    })
 
     .otherwise({
-      redirectTo: '/puppers'
+      redirectTo: '/welcome'
     });
 }]);

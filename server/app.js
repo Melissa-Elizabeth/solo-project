@@ -3,6 +3,9 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var pg = require('pg');
+var decoder = require('./modules/decoder');
+var auth = require('./routes/auth');
+var save = require('./routes/save');
 
 app.listen(3003, function() {
   console.log('listening on 3003');
@@ -12,7 +15,7 @@ var config = {
   database: 'phi',
   host: 'localhost',
   port: 5432,
-  max: 10,
+  max: 100,
   idleTimeoutMillis: 30000
 };
 
@@ -28,6 +31,8 @@ app.use(express.static(path.resolve('./server/public')));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));
 });
+
+
 
 app.get('/result', function(req, res) {
   console.log('hit my route', req.query);
@@ -56,6 +61,10 @@ app.get('/result', function(req, res) {
 
       if (req.query.kids == 'yes'){
         query += " AND kids = 'yes'";
+      }
+
+      if (req.query.train == 'easy'){
+        query += " AND train = 'easy'";
       }
       client.query(query, function(err, result) {
         done();
@@ -99,7 +108,23 @@ app.get('/dog/:id', function(req, res){
 });
 
 
+// Decodes the token in the request header and attaches the decoded token to the request.
+app.use(decoder.token);
 
+app.use('/auth', auth);
+app.use('/save', save);
+
+
+
+/* Whatever you do below this is protected by your authentication.
+WARNING: So far you are returning secret data to ANYONE who is logged in.
+There is still more work to be done if you want to implement roles.
+No authorization has been completed yet in this branch.
+You can use req.decodedToken and some logic to do that.
+Other branches in the nodeFire repository show how to do that. */
+
+// This is the route for your secretData. The request gets here after it has been authenticated.
+// app.use("/privateData", privateData);
 
 
 
