@@ -6,6 +6,7 @@ var pg = require('pg');
 var decoder = require('./modules/decoder');
 var auth = require('./routes/auth');
 var save = require('./routes/save');
+var results = require('./routes/results');
 
 app.listen(3003, function() {
   console.log('listening on 3003');
@@ -113,7 +114,7 @@ app.use(decoder.token);
 
 app.use('/auth', auth);
 app.use('/save', save);
-
+app.use('/results', results);
 
 
 /* Whatever you do below this is protected by your authentication.

@@ -30,11 +30,15 @@ color: white;
  </div>
 
 
+
+
  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
    <ul class="nav navbar-nav">
      <li><a href="#">Breeds</a></li>
-     <li><a href="#">Owners</a></li>
-      <li><a href="#">Resources</a></li>
+     <li><a href="#">Resources</a></li>
+     <a ng-repeat="user in pro.users.list">
+      <li><a ng-click="hc.login()" href="#!profile/10">Profile</a></li>
+    </a>
    </ul>
    <form class="navbar-form navbar-left">
      <div class="form-group">
@@ -53,7 +57,6 @@ color: white;
 
  </div>
 </div>
-
 
 </nav>
 

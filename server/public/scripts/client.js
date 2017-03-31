@@ -29,6 +29,11 @@ PupApp.config(['$routeProvider', function($routeProvider) {
       controller: 'CorgiController',
       controllerAs: 'cc'
     })
+    .when('/profile/:id', {
+      templateUrl: '/views/profile.html',
+      controller: 'ProfileController',
+      controllerAs: 'pro'
+    })
 
     .otherwise({
       redirectTo: '/welcome'

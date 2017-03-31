@@ -13,15 +13,29 @@ var pool = new pg.Pool(config);
 
 router.post('/', function (req, res) {
   var newSave = req.body;
-var newUser = req.decodedToken;
   console.log('New Hero: ', newSave);
   pool.connect()
     .then(function (client) {
-      client.query('INSERT INTO users (email, name, dog_id, dog_name, dog_pic) VALUES ($1, $2, $3, $4, $5)',
-        [newUser.email, newUser.name, newSave.id, newSave.name, newSave.pics])
+      client.query('SELECT * FROM users WHERE email=$1',
+        [req.decodedToken.email])
         .then(function (result) {
-          client.release();
-          res.sendStatus(201);
+          pool.connect()
+          .then(function (client) {
+            if(result.rows.length > 0){
+              
+            } else {
+              client.query('INSERT INTO users (email, name, shed, drool, bark, apartment, kids, train) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+                [newUser.email, newUser.name, newSave.shed, newSave.drool, newSave.bark, newSave.apartment, newSave.kids, newSave.train ])
+                .then(function (result) {
+                  client.release();
+                  res.sendStatus(201);
+                })
+                .catch(function (err) {
+                  console.log('error on INSERT', err);
+                  res.sendStatus(500);
+                });
+            }
+          });
         })
         .catch(function (err) {
           console.log('error on INSERT', err);

@@ -20,6 +20,8 @@ background-color: #FF7371;
   background-color: #FF7371;
 }
 
+
+
 </style>
 <!-- end styling -->
 
@@ -109,10 +111,10 @@ background-color: #FF7371;
       <div class="main-container">
         <div class="left-cl">
 
-          <img ng-src="../assets/apartment.jpg" class="questionpic">
+          <img ng-src="../assets/apartment-1.jpg" class="questionpic">
         </div>
         <div class="right-cl">
-          <h2>Would you like an apartment-friendly companion?</h2>
+          <h2 class="questions">Would you like an apartment-friendly companion?</h2>
 
           <button class="question" ng-click="pc.next4('yes')"> Yes</button>
           <button class="question" ng-click="pc.next4('no')">No</button>
@@ -133,7 +135,7 @@ background-color: #FF7371;
           <img ng-src="../assets/kids.jpg" class="questionpic">
         </div>
         <div class="right-cl">
-          <h2>Will your new friend be living or interacting with children?</h2>
+          <h2 class="questions">Will your new friend be living or interacting with children?</h2>
 
           <button class="question" ng-click="pc.next5('yes')"> Yes</button>
           <button class="question" ng-click="pc.next5('no')">No</button>
@@ -153,7 +155,7 @@ background-color: #FF7371;
           <img ng-src="../assets/train.jpeg" class="questionpic">
         </div>
         <div class="right-cl">
-          <h2>Is trainability important to you?</h2>
+          <h2 class="questions">Is trainability important to you?</h2>
 
           <button class="question" ng-click="pc.next6('easy')"> Yes</button>
           <button class="question" ng-click="pc.next6('hard')">No</button>
@@ -209,7 +211,7 @@ end of questions -->
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li><a href="#">Link</a></li>
+      <li><a ng-href="#!views/profile.html">Link</a></li>
       <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
 
@@ -271,4 +273,4 @@ end of questions -->
 
 <br><br><br>
 <center>
-   <div ng-show="pc.results"> <a ng-click="pc.saveResults()" class="btn btn-primary">Save your results</a></div> </center>
+   <div ng-show="pc.results"> <a ng-click="pc.saveResults(pc.desiredPetObject)" class="btn btn-primary">Save your results</a></div> </center>

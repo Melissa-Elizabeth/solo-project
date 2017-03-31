@@ -1,4 +1,4 @@
-angular.module('slideShowExample', ['simple-slideshow']);
+
 PupApp.controller('SoloPupController', ['PupFactory', '$routeParams',  function(PupFactory, $routeParams){
 
   var self = this;

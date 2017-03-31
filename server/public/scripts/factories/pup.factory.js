@@ -46,27 +46,27 @@
 //     });
 //   }
 
-  // auth.$onAuthStateChanged(function(firebaseUser){
-  //   // firebaseUser will be null if not logged in
-  //   if(firebaseUser) {
-  //     // This is where we make our call to our server
-  //     firebaseUser.getToken().then(function(idToken){
-  //       $http({
-  //         method: 'GET',
-  //         url: '/login',
-  //         headers: {
-  //           id_token: idToken
-  //         }
-  //       }).then(function(response){
-  //         self.secretData = response.data;
-  //       });
-  //     });
-  //   } else {
-  //     console.log('Not logged in or not authorized.');
-  //     self.secretData = "Log in to get some secret data.";
-  //   }
-  //
-  // });
+// auth.$onAuthStateChanged(function(firebaseUser){
+//   // firebaseUser will be null if not logged in
+//   if(firebaseUser) {
+//     // This is where we make our call to our server
+//     firebaseUser.getToken().then(function(idToken){
+//       $http({
+//         method: 'GET',
+//         url: '/login',
+//         headers: {
+//           id_token: idToken
+//         }
+//       }).then(function(response){
+//         self.secretData = response.data;
+//       });
+//     });
+//   } else {
+//     console.log('Not logged in or not authorized.');
+//     self.secretData = "Log in to get some secret data.";
+//   }
+//
+// });
 
 
 //   return {
@@ -89,8 +89,11 @@
 PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebaseAuth) {
 
   var dogs ={list: []};
+  var users={list: []};
   var currentPup={details: {}};
   var desiredPetObject={};
+  var daResults={details:{}};
+  var myResults={list: []};
   var auth = $firebaseAuth();
 
   function result(desiredPetObject) {
@@ -114,52 +117,70 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebas
     }).then(function(response) {
       console.log(response.data);
       currentPup.details = response.data;
+
     });
   }
 
-// function saveResults(desiredPetObject, idToken) {
-//   // var results = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids, train: desiredPetObject.train};
-// var results = dogs.list;
-// firebaseUser.user.getToken().then(function(idToken){
-// console.log(results);
-//     $http({
-//       method: 'POST',
-//       url: '/save',
-//       data: results,
-//
-//     }).then(function(response){
-//     console.log(response);
-//
-// });
-// });
-// }
-function saveResults(desiredPetObject, idToken) {
-  var results = dogs.list;
-//     drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids, train: desiredPetObject.train};
-// var results = desiredPetObject;
+  // function saveResults(desiredPetObject, idToken) {
+  //   // var results = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids, train: desiredPetObject.train};
+  // var results = dogs.list;
+  // firebaseUser.user.getToken().then(function(idToken){
+  // console.log(results);
+  //     $http({
+  //       method: 'POST',
+  //       url: '/save',
+  //       data: results,
+  //
+  //     }).then(function(response){
+  //     console.log(response);
+  //
+  // });
+  // });
+  // }
 
-auth.$onAuthStateChanged(function(firebaseUser){
-  // firebaseUser will be null if not logged in
-  if(firebaseUser) {
-    // This is where we make our call to our server
-    firebaseUser.getToken().then(function(idToken){
-      $http({
-        method: 'POST',
-        url: '/save',
-        data: results,
-        headers: {
-          id_token: idToken
-        }
-      }).then(function(response){
-        self.secretData = response.data;
-      });
+  function getResult(userID){
+    $http({
+      method: 'GET',
+      url: '/results/' + userID,
+    }).then(function(response) {
+      console.log(response.data);
+      result(response.data);
     });
-  } else {
-    console.log('Not logged in or not authorized.');
-    self.secretData = "Log in to get some secret data.";
   }
+
+
+
+  function saveResults(desiredPetObject) {
+    // var results = dogs.list;
+
+
+    auth.$onAuthStateChanged(function(firebaseUser){
+      // firebaseUser will be null if not logged in
+      if(firebaseUser) {
+        // This is where we make our call to our server
+        firebaseUser.getToken().then(function(idToken){
+          $http({
+            method: 'POST',
+            url: '/save',
+            data: desiredPetObject,
+            headers: {
+              id_token: idToken
+            }
+          }).then(function(response){
+            myResults.list = response.data;
+            getResult();
+          });
+        });
+      } else {
+        console.log('Not logged in or not authorized.');
+        self.secretData = "Log in to get some secret data.";
+      }
+
+
 });
 }
+
+
 
 
 
@@ -172,10 +193,10 @@ auth.$onAuthStateChanged(function(firebaseUser){
     getPup: getPup,
     currentPup:currentPup,
     desiredPetObject:desiredPetObject,
-    saveResults:saveResults
+    saveResults:saveResults,
+    myResults:myResults,
+    getResult:getResult,
+    users:users
 
-
-
-
-};
+  };
 }]);

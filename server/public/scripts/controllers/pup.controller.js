@@ -13,6 +13,10 @@ PupApp.controller('PupController', ['PupFactory',
 
   self.saveResults=PupFactory.saveResults;
 
+  self.myResults=PupFactory.myResults;
+
+  self.getPup=PupFactory.getPup;
+
 self.header = "";
 self.logoHead= "";
 self.navbar = "";
@@ -127,7 +131,7 @@ self.results = "";
 
 
 
-  self.getPup=PupFactory.getPup;
+
 
 
 
