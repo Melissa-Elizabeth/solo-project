@@ -34,6 +34,12 @@ PupApp.config(['$routeProvider', function($routeProvider) {
       controller: 'ProfileController',
       controllerAs: 'pro'
     })
+    .when('/results', {
+      templateUrl: '/views/results.html',
+      controller: 'ResultsController',
+      controllerAs: 'rc'
+    })
+
 
     .otherwise({
       redirectTo: '/welcome'

@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/:id', function(req, res){
-  var userId = req.params.id;
+  var userId = 1;
   // This will be replaced with a SELECT statement to SQL
-  console.log(req.query);
+  console.log(userID);
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
       // There was an error connecting to the database

@@ -1,14 +1,11 @@
 
-PupApp.controller('PupController', ['PupFactory',
-'$firebaseAuth',
-'$http', '$location', function(PupFactory,
-  $firebaseAuth,
-  $http, $location){
+PupApp.controller('PupController', ['PupFactory','$firebaseAuth','$http', '$location', function(PupFactory, $firebaseAuth, $http, $location){
   var auth = $firebaseAuth();
   var self = this;
 
   self.dogs = PupFactory.dogs;
-
+ self.users = PupFactory.users;
+ self.currentUser = PupFactory.currentUser;
   self.result=PupFactory.result;
 
   self.saveResults=PupFactory.saveResults;
@@ -19,7 +16,7 @@ PupApp.controller('PupController', ['PupFactory',
 
 self.header = "";
 self.logoHead= "";
-self.navbar = "";
+self.navbar=true;
 self.results = "";
 
   self.desiredPetObject=PupFactory.desiredPetObject;
@@ -33,9 +30,20 @@ self.results = "";
   self.question5 = false;
   self.question6 = false;
   self.header = false;
-  self.navbar = false;
+  self.navbar = true;
   self.results = false;
 
+} else {
+  self.logoHead= false;
+  self.question1 = false;
+  self.question2 = false;
+  self.question3 = false;
+  self.question4 = false;
+  self.question5 = false;
+  self.question6 = false;
+  self.header = true;
+  self.navbar = true;
+  self.results = true;
 }
 
 
@@ -73,13 +81,18 @@ self.results = "";
 
   self.next6 = function(answer) {
     self.desiredPetObject.train=answer;
+      // $location.path('/results').replace();
     self.result(self.desiredPetObject);
+
+
+
+
     self.question6 = false;
     self.logoHead = false;
     self.header= true;
     self.navbar = true;
     self.results = true;
-  };
+};
 
   self.save = function(){
     self.result(self.desiredPetObject);

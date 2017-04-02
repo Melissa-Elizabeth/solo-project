@@ -1,6 +1,7 @@
-PupApp.controller('WelcomeController', ['PupFactory','$firebaseAuth','$location', function(PupFactory, $firebaseAuth, $location){
+PupApp.controller('WelcomeController', ['PupFactory','$firebaseAuth','$location', '$http', function(PupFactory, $firebaseAuth, $location, $http){
   var auth = $firebaseAuth();
   var self = this;
+  self.getUser=PupFactory.getUser;
 
 console.log('WelcomeController loaded');
 self.login = function(){
@@ -30,6 +31,7 @@ auth.$onAuthStateChanged(function(firebaseUser){
       }).then(function(response){
         self.secretData = response.data;
       });
+      self.getUser();
     });
   } else {
     console.log('Not logged in or not authorized.');

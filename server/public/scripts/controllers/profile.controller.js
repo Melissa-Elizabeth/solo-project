@@ -5,9 +5,9 @@ self.users = PupFactory.users;
 self.myResults=PupFactory.myResults;
 self.getResults=PupFactory.getResults;
 self.message="Breed All About It";
+self.currentResult=PupFactory.currentResult;
 
-
-
-  self.getResults=PupFactory.getResults($routeParams.id);
+self.currentUser=PupFactory.currentUser;
+  self.getResult=PupFactory.getResult($routeParams.id);
 
 }]);

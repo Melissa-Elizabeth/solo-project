@@ -1,100 +1,22 @@
-// PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebaseAuth){
-//
-//   var dogs ={list: []};
-//   var users ={list: []};
-//   var currentPup={details: {}};
-//   var desiredPetObject={};
-//   var auth = $firebaseAuth();
-//
-//   function result(desiredPetObject) {
-//     var params = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids};
-//     console.log(params);
-//     $http({
-//       method: 'GET',
-//       url: '/result',
-//       params: params
-//     }).then(function(response) {
-//       console.log(response.data);
-//       dogs.list = response.data;
-//     });
-//     console.log("we hit it");
-//   }
-//
-//   function saveResults(userResult, idToken) {
-//     var search = {shed: userResult.shed, drool: userResult.drool, bark: userResult.bark, apartment: userResult.apartment, kids: userResult.kids };
-//     $http({
-//       method: 'POST',
-//       url: '/save',
-//       data: search,
-//       headers: {
-//         id_token: idToken
-//       }
-//     }).then(function(response){
-//       console.log(response);
-//
-//     });
-//   }
-//
-//
-//   function getPup(pupID){
-//     $http({
-//       method: 'GET',
-//       url: '/dog/' + pupID,
-//     }).then(function(response) {
-//       console.log(response.data);
-//       currentPup.details = response.data;
-//     });
-//   }
-
-// auth.$onAuthStateChanged(function(firebaseUser){
-//   // firebaseUser will be null if not logged in
-//   if(firebaseUser) {
-//     // This is where we make our call to our server
-//     firebaseUser.getToken().then(function(idToken){
-//       $http({
-//         method: 'GET',
-//         url: '/login',
-//         headers: {
-//           id_token: idToken
-//         }
-//       }).then(function(response){
-//         self.secretData = response.data;
-//       });
-//     });
-//   } else {
-//     console.log('Not logged in or not authorized.');
-//     self.secretData = "Log in to get some secret data.";
-//   }
-//
-// });
-
-
-//   return {
-//     dogs: dogs,
-//     result: result,
-//     getPup: getPup,
-//     currentPup:currentPup,
-//     desiredPetObject:desiredPetObject,
-//     saveResults: saveResults
-//
-//
-//
-//   };
-// }]);
 
 
 
 
 
-PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebaseAuth) {
+
+PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location', function($http, $firebaseAuth, $location) {
 
   var dogs ={list: []};
   var users={list: []};
   var currentPup={details: {}};
-  var desiredPetObject={};
+  var currentUser={details: {}};
+  var currentResult={details: {}};
+  var desiredPetObject={details: {}};
   var daResults={details:{}};
   var myResults={list: []};
   var auth = $firebaseAuth();
+
+
 
   function result(desiredPetObject) {
     var params = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids, train: desiredPetObject.train};
@@ -108,6 +30,8 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebas
       dogs.list = response.data;
     });
     console.log("we hit it");
+    getUser();
+
   }
 
   function getPup(pupID){
@@ -117,6 +41,17 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebas
     }).then(function(response) {
       console.log(response.data);
       currentPup.details = response.data;
+
+    });
+  }
+
+  function getUser(userID){
+    $http({
+      method: 'GET',
+      url: '/user/' + userID,
+    }).then(function(response) {
+      console.log(response.data);
+      currentUser.details = response.data;
 
     });
   }
@@ -144,7 +79,9 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebas
       url: '/results/' + userID,
     }).then(function(response) {
       console.log(response.data);
-      result(response.data);
+      currentResult.detail=response.data;
+      // result(response.data);
+
     });
   }
 
@@ -153,7 +90,7 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebas
   function saveResults(desiredPetObject) {
     // var results = dogs.list;
 
-
+console.log("clicked");
     auth.$onAuthStateChanged(function(firebaseUser){
       // firebaseUser will be null if not logged in
       if(firebaseUser) {
@@ -167,8 +104,9 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebas
               id_token: idToken
             }
           }).then(function(response){
-            myResults.list = response.data;
-            getResult();
+              console.log(response);
+
+
           });
         });
       } else {
@@ -191,6 +129,9 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', function($http, $firebas
     dogs: dogs,
     result: result,
     getPup: getPup,
+    currentUser: currentUser,
+    getUser:getUser,
+    currentResult:currentResult,
     currentPup:currentPup,
     desiredPetObject:desiredPetObject,
     saveResults:saveResults,

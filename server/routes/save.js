@@ -13,6 +13,7 @@ var pool = new pg.Pool(config);
 
 router.post('/', function (req, res) {
   var newSave = req.body;
+  var newUser = req.decodedToken;
   console.log('New Hero: ', newSave);
   pool.connect()
     .then(function (client) {
@@ -22,7 +23,9 @@ router.post('/', function (req, res) {
           pool.connect()
           .then(function (client) {
             if(result.rows.length > 0){
-              
+              client.query('UPDATE users SET shed = $1, drool = $2, bark = $3, apartment = $4, kids = $5, train= $6 WHERE email = $7',
+         [newSave.shed, newSave.drool, newSave.bark, newSave.apartment, newSave.kids, newSave.train, newUser.email]);
+
             } else {
               client.query('INSERT INTO users (email, name, shed, drool, bark, apartment, kids, train) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
                 [newUser.email, newUser.name, newSave.shed, newSave.drool, newSave.bark, newSave.apartment, newSave.kids, newSave.train ])

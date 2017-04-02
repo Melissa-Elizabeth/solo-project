@@ -67,6 +67,10 @@ app.get('/result', function(req, res) {
       if (req.query.train == 'easy'){
         query += " AND train = 'easy'";
       }
+
+      if (req.query.energy == 'high'){
+        query += " AND train = 'high'";
+      }
       client.query(query, function(err, result) {
         done();
 
@@ -96,6 +100,31 @@ app.get('/dog/:id', function(req, res){
       // We connected to the database!!!
       // Now, we're gonna' git stuff!!!!!
       client.query('SELECT * FROM dogs WHERE id=$1;', [dogId], function(errorMakingQuery, result){
+        done();
+        if(errorMakingQuery) {
+          console.log('Error making the database query: ', errorMakingQuery);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      });
+    }
+  });
+});
+
+app.get('/user/:id', function(req, res){
+  var userId = 1;
+  // This will be replaced with a SELECT statement to SQL
+  console.log(req.query);
+  pool.connect(function(errorConnectingToDatabase, client, done){
+    if(errorConnectingToDatabase) {
+      // There was an error connecting to the database
+      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      // We connected to the database!!!
+      // Now, we're gonna' git stuff!!!!!
+      client.query('SELECT * FROM users WHERE id=$1;', [userId], function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Error making the database query: ', errorMakingQuery);

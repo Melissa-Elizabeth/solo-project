@@ -16,7 +16,7 @@ color: white;
 
 
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-repeat="user in hc.currentUser.details">
 <div class="container-fluid">
 
  <div class="navbar-header">
@@ -30,16 +30,14 @@ color: white;
  </div>
 
 
-
-
- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
    <ul class="nav navbar-nav">
      <li><a href="#">Breeds</a></li>
      <li><a href="#">Resources</a></li>
-     <a ng-repeat="user in pro.users.list">
-      <li><a ng-click="hc.login()" href="#!profile/10">Profile</a></li>
-    </a>
+     <li><a ng-click="wc.login()" ng-href="#!profile/{{user.id}}">Profile</a></li>
+
    </ul>
+
    <form class="navbar-form navbar-left">
      <div class="form-group">
        <input type="text" class="form-control" placeholder="Search">
@@ -47,9 +45,9 @@ color: white;
      <button type="submit" class="btn btn-default">Submit</button>
    </form>
    <ul class="nav navbar-nav navbar-right">
-     <li ng-click="pc.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</li><br>
+     <li ng-click="hc.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</li><br>
      <li>
-       {{pc.secretData}}
+       {{hc.secretData}}
      </li>
    </ul>
 
