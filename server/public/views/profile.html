@@ -1,61 +1,87 @@
-<a ng-repeat="user in pro.users.list">
+<style>
+/*body{
+  background-color: #F4F190;
+  color: white;
+}*/
+.logoHead{
 
-{{user.id}}
-{{pro.daResults.list}}
+  height: 50px;
+  width: 400px;
+}
 
-{{pro.message}}
+.navbar {
+  background-color: #FF7371;
+  color: white;
+}
+
+.btn {
+    background-color: #FF7371;
+}
+.panel-heading {
+    background-color: #FF7371;
+}
+
+</style>
+
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+
+ <div class="navbar-header">
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+     <span class="sr-only">Toggle navigation</span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+   </button>
+ <img class= "logoHead" ng-src="../assets/breedhead3.png">
+ </div>
 
 
 
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a ng-href="#!home">Home</a></li>
+        <li><a href="#">Breeds</a></li>
+        <li><a href="#">Resources</a></li>
 
 
+    </ul>
 
-<div class="container">
-      <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <a href="edit.html" >Edit Profile</a>
 
-        <a href="edit.html" >Logout</a>
-       <br>
-<p class=" text-info">May 05,2014,03:00 pm </p>
+      <ul class="nav navbar-nav navbar-right">
+      <li ng-click="pc.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</li><br>
+          <li>
+            {{pc.secretData}}
+          </li>
+
+
+        </ul>
       </div>
+    </div>
+</nav>
+
+
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
 
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Sheena Shrestha</h3>
+
+              <h3 class="panel-title">Melissa Hare</h3>
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+                <div class="col-md-3 col-lg-3 " align="center"> <img ng-src="../assets/littlemissee.jpg" class="img-circle img-responsive"> </div>
 
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
+
                 <div class=" col-md-9 col-lg-9 ">
                   <table class="table table-user-information">
                     <tbody>
+
+
                       <tr>
-                        <td>Department:</td>
-                        <td>Programming</td>
-                      </tr>
-                      <tr>
-                        <td>Hire date:</td>
-                        <td>06/23/2013</td>
-                      </tr>
-                      <tr>
-                        <td>Date of Birth</td>
-                        <td>01/24/1988</td>
+                        <td>Birthday</td>
+                        <td>01/12</td>
                       </tr>
 
                          <tr>
@@ -64,41 +90,37 @@
                         <td>Female</td>
                       </tr>
                         <tr>
-                        <td>Home Address</td>
-                        <td>Kathmandu,Nepal</td>
+                        <td>Country</td>
+                        <td>United States</td>
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><a href="mailto:info@support.com">info@support.com</a></td>
+                        <td><a href="mailto:info@support.com">hare.melissa@gmail.com</a></td>
                       </tr>
-                        <td>Phone Number</td>
-                        <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
+                        <td>Bio</td>
+                        <td><br><br>
                         </td>
 
                       </tr>
 
                     </tbody>
                   </table>
-                  <a ng-repeat="user in pro.currentUser.details">
 
 
 
-                  <a ng-href= "#!puppers" class="btn btn-primary">Your saved results</a>
-                  <a ng-href="#" class="btn btn-primary" ng-click=>Team Sales Performance</a>
-            </a>
+
+                  <a ng-href="#!puppers" class="btn btn-primary">Your saved results</a>
+
+
                 </div>
               </div>
             </div>
                  <div class="panel-footer">
                         <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                         <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+
                         </span>
                     </div>
 
           </div>
         </div>
-      </div>
-</div>
-</a>

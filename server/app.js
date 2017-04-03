@@ -16,7 +16,7 @@ var config = {
   database: 'phi',
   host: 'localhost',
   port: 5432,
-  max: 100,
+  max: 10,
   idleTimeoutMillis: 30000
 };
 
@@ -33,7 +33,21 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));
 });
 
-
+app.get('/breed', function (req, res) {
+  console.log('hit');
+  pool.connect()
+    .then(function (client) {
+      client.query('SELECT id, name, pics FROM dogs')
+        .then(function (result) {
+          client.release();
+          res.send(result.rows);
+        })
+        .catch(function (err) {
+          console.log('error on SELECT', err);
+          res.sendStatus(500);
+        });
+    });
+});
 
 app.get('/result', function(req, res) {
   console.log('hit my route', req.query);
@@ -71,6 +85,17 @@ app.get('/result', function(req, res) {
       if (req.query.energy == 'high'){
         query += " AND train = 'high'";
       }
+
+      if (req.query.size == 'large'){
+        query += " AND size = 'large'";
+      } else if
+        (req.query.size == 'medium'){
+          query += " AND size = 'medium'";
+        } else if
+          (req.query.size == 'small'){
+          query += " AND size = 'small'";
+        }
+
       client.query(query, function(err, result) {
         done();
 

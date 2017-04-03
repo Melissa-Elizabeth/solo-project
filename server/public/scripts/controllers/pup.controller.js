@@ -10,7 +10,7 @@ PupApp.controller('PupController', ['PupFactory','$firebaseAuth','$http', '$loca
 
   self.saveResults=PupFactory.saveResults;
 
-  self.myResults=PupFactory.myResults;
+
 
   self.getPup=PupFactory.getPup;
 
@@ -22,13 +22,16 @@ self.results = "";
   self.desiredPetObject=PupFactory.desiredPetObject;
 
   if(self.desiredPetObject.shed===undefined){
-  self.logoHead= true;
+
   self.question1 = true;
   self.question2 = false;
   self.question3 = false;
   self.question4 = false;
   self.question5 = false;
   self.question6 = false;
+  self.question7 = false;
+  self.question8 = false;
+  self.question9 = false;
   self.header = false;
   self.navbar = true;
   self.results = false;
@@ -41,6 +44,9 @@ self.results = "";
   self.question4 = false;
   self.question5 = false;
   self.question6 = false;
+  self.question7 = false;
+  self.question8 = false;
+  self.question9 = false;
   self.header = true;
   self.navbar = true;
   self.results = true;
@@ -81,14 +87,35 @@ self.results = "";
 
   self.next6 = function(answer) {
     self.desiredPetObject.train=answer;
-      // $location.path('/results').replace();
+    console.log(answer);
+    self.question6 = false;
+    self.question7 = true;
+  };
+
+  self.next7 = function(answer) {
+    self.desiredPetObject.train=answer;
+    console.log(answer);
+    self.question7 = false;
+    self.question8 = true;
+  };
+
+  self.next8 = function(answer) {
+    self.desiredPetObject.train=answer;
+    console.log(answer);
+    self.question8 = false;
+    self.question9 = true;
+  };
+
+  self.next9 = function(answer) {
+    self.desiredPetObject.size=answer;
+
     self.result(self.desiredPetObject);
 
 
 
 
-    self.question6 = false;
-    self.logoHead = false;
+    self.question9 = false;
+    // self.logoHead = false;
     self.header= true;
     self.navbar = true;
     self.results = true;

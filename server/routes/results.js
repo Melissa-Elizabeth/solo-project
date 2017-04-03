@@ -13,7 +13,7 @@ router.get('/:id', function(req, res){
     } else {
       // We connected to the database!!!
       // Now, we're gonna' git stuff!!!!!
-      client.query('SELECT shed, drool, bark FROM users WHERE id=$1;', [userId], function(errorMakingQuery, result){
+      client.query('SELECT shed, drool, bark, apartment, kids, pet, train, energy, size FROM users WHERE id=$1;', [userId], function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Error making the database query: ', errorMakingQuery);

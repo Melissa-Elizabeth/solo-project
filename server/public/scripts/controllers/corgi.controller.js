@@ -1,7 +1,7 @@
 
 
 
-    PupApp.controller('CorgiController', ['$scope', 'Upload', function ($scope, Upload) {
+    PupApp.controller('CorgiController', ['Upload', function ( Upload) {
         // upload later on form submit or something similar
         $scope.submit = function() {
           if ($scope.form.file.$valid && $scope.file) {

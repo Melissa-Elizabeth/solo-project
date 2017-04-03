@@ -4,7 +4,7 @@
 
 
 
-PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location', function($http, $firebaseAuth, $location) {
+PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location',  function($http, $firebaseAuth, $location) {
 
   var dogs ={list: []};
   var users={list: []};
@@ -17,9 +17,21 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location', function($h
   var auth = $firebaseAuth();
 
 
+  function allPups() {
+    console.log('hiiii');
+    $http({
+      method:'GET',
+      url: '/breed'
+    }).then(function(response) {
+      console.log(response.data);
+      dogs.list = response.data;
+
+    });
+  }
+
 
   function result(desiredPetObject) {
-    var params = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids, train: desiredPetObject.train};
+    var params = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids, train: desiredPetObject.train, size: desiredPetObject.size};
     console.log(params);
     $http({
       method: 'GET',
@@ -56,22 +68,7 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location', function($h
     });
   }
 
-  // function saveResults(desiredPetObject, idToken) {
-  //   // var results = {shed: desiredPetObject.shed, drool: desiredPetObject.drool, bark: desiredPetObject.bark, apartment: desiredPetObject.apartment, kids: desiredPetObject.kids, train: desiredPetObject.train};
-  // var results = dogs.list;
-  // firebaseUser.user.getToken().then(function(idToken){
-  // console.log(results);
-  //     $http({
-  //       method: 'POST',
-  //       url: '/save',
-  //       data: results,
-  //
-  //     }).then(function(response){
-  //     console.log(response);
-  //
-  // });
-  // });
-  // }
+
 
   function getResult(userID){
     $http({
@@ -88,9 +85,8 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location', function($h
 
 
   function saveResults(desiredPetObject) {
-    // var results = dogs.list;
+    swal("Pawsome!", "Results saved", "success");
 
-console.log("clicked");
     auth.$onAuthStateChanged(function(firebaseUser){
       // firebaseUser will be null if not logged in
       if(firebaseUser) {
@@ -106,7 +102,6 @@ console.log("clicked");
           }).then(function(response){
               console.log(response);
 
-
           });
         });
       } else {
@@ -114,8 +109,8 @@ console.log("clicked");
         self.secretData = "Log in to get some secret data.";
       }
 
-
 });
+
 }
 
 
@@ -137,7 +132,8 @@ console.log("clicked");
     saveResults:saveResults,
     myResults:myResults,
     getResult:getResult,
-    users:users
+    users:users,
+    allPups:allPups
 
   };
 }]);

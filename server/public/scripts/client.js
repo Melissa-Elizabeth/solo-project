@@ -1,6 +1,6 @@
 
 var PupApp = angular.module('PupApp',  ['ngRoute',
-'firebase', 'ngFileUpload']);
+'firebase']);
 
 PupApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -38,6 +38,11 @@ PupApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/results.html',
       controller: 'ResultsController',
       controllerAs: 'rc'
+    })
+    .when('/breeds', {
+      templateUrl: '/views/breeds.html',
+      controller: 'BreedsController',
+      controllerAs: 'bc'
     })
 
 
