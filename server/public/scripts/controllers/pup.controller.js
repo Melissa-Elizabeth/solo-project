@@ -1,56 +1,47 @@
 
 PupApp.controller('PupController', ['PupFactory','$firebaseAuth','$http', '$location', function(PupFactory, $firebaseAuth, $http, $location){
+
   var auth = $firebaseAuth();
   var self = this;
 
   self.dogs = PupFactory.dogs;
- self.users = PupFactory.users;
- self.currentUser = PupFactory.currentUser;
+  self.users = PupFactory.users;
+  self.currentUser = PupFactory.currentUser;
   self.result=PupFactory.result;
-
   self.saveResults=PupFactory.saveResults;
-
-
-
   self.getPup=PupFactory.getPup;
-
-self.header = "";
-self.logoHead= "";
-self.navbar=true;
-self.results = "";
-
   self.desiredPetObject=PupFactory.desiredPetObject;
 
   if(self.desiredPetObject.shed===undefined){
 
-  self.question1 = true;
-  self.question2 = false;
-  self.question3 = false;
-  self.question4 = false;
-  self.question5 = false;
-  self.question6 = false;
-  self.question7 = false;
-  self.question8 = false;
-  self.question9 = false;
-  self.header = false;
-  self.navbar = true;
-  self.results = false;
+    self.question1 = true;
+    self.question2 = false;
+    self.question3 = false;
+    self.question4 = false;
+    self.question5 = false;
+    self.question6 = false;
+    self.question7 = false;
+    self.question8 = false;
+    self.question9 = false;
+    self.header = false;
+    self.navbar = true;
+    self.results = false;
 
-} else {
-  self.logoHead= false;
-  self.question1 = false;
-  self.question2 = false;
-  self.question3 = false;
-  self.question4 = false;
-  self.question5 = false;
-  self.question6 = false;
-  self.question7 = false;
-  self.question8 = false;
-  self.question9 = false;
-  self.header = true;
-  self.navbar = true;
-  self.results = true;
-}
+  } else {
+    self.logoHead= false;
+    self.question1 = false;
+    self.question2 = false;
+    self.question3 = false;
+    self.question4 = false;
+    self.question5 = false;
+    self.question6 = false;
+    self.question7 = false;
+    self.question8 = false;
+    self.question9 = false;
+    self.header = true;
+    self.navbar = true;
+    self.results = true;
+  }
 
 
 
@@ -108,18 +99,13 @@ self.results = "";
 
   self.next9 = function(answer) {
     self.desiredPetObject.size=answer;
-
     self.result(self.desiredPetObject);
-
-
-
-
     self.question9 = false;
     // self.logoHead = false;
     self.header= true;
     self.navbar = true;
     self.results = true;
-};
+  };
 
   self.save = function(){
     self.result(self.desiredPetObject);
@@ -135,7 +121,6 @@ self.results = "";
       console.log("Authentication failed: ", error);
     });
   };
-
 
   auth.$onAuthStateChanged(function(firebaseUser){
     // firebaseUser will be null if not logged in
@@ -161,20 +146,8 @@ self.results = "";
 
   self.logOut = function(){
     auth.$signOut().then(function(){
-        $location.path('/welcome').replace();
+      $location.path('/welcome').replace();
       console.log('Logging the user out!');
     });
   };
-
-
-
-
-
-
-
-
-
-
 }]);
-
-// }]);

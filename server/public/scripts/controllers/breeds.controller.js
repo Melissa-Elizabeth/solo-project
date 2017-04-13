@@ -1,10 +1,9 @@
 PupApp.controller('BreedsController', ['PupFactory','$firebaseAuth','$location', '$http', function(PupFactory, $firebaseAuth, $location, $http){
+
   var auth = $firebaseAuth();
   var self = this;
-
-  self.dogs=PupFactory.dogs;
   self.allPups=PupFactory.allPups();
-
+  self.allDogs=PupFactory.allDogs;
 
 
   self.login = function(){
@@ -12,7 +11,7 @@ PupApp.controller('BreedsController', ['PupFactory','$firebaseAuth','$location',
       console.log("Firebase Authenticated as: ", firebaseUser.user.displayName);
       $location.path('/profile/self.currentUser.id').replace();
       firebaseUser.user.getToken().then(function(idToken){
-        // PupFactory.saveResults(self.desiredPetObject, idToken);
+
       });
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
@@ -47,6 +46,5 @@ PupApp.controller('BreedsController', ['PupFactory','$firebaseAuth','$location',
       console.log('Logging the user out!');
     });
   };
-
 
 }]);

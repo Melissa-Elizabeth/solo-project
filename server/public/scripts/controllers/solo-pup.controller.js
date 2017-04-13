@@ -5,9 +5,9 @@ PupApp.controller('SoloPupController', ['PupFactory', '$routeParams',  function(
 
   console.log($routeParams);
 
-
-  self.result=PupFactory.result;
+self.result=PupFactory.result;
 self.currentPup=PupFactory.currentPup;
+  self.desiredPetObject=PupFactory.desiredPetObject;
   self.getPup=PupFactory.getPup($routeParams.id);
 
   self.header = "";
@@ -15,16 +15,12 @@ self.currentPup=PupFactory.currentPup;
   self.navbar = "";
   self.results = "";
 
-    self.desiredPetObject=PupFactory.desiredPetObject;
 
-  self.next6 = function(answer) {
-
-      // $location.path('/results').replace();
     self.result(self.desiredPetObject);
 
     self.header= true;
     self.navbar = true;
     self.results = true;
-};
+
 
 }]);

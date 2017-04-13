@@ -1,12 +1,8 @@
 
-
-
-
-
-
 PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location',  function($http, $firebaseAuth, $location) {
 
   var dogs ={list: []};
+  var allDogs={list: []};
   var users={list: []};
   var currentPup={details: {}};
   var currentUser={details: {}};
@@ -14,6 +10,7 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location',  function($
   var desiredPetObject={details: {}};
   var daResults={details:{}};
   var myResults={list: []};
+
   var auth = $firebaseAuth();
 
 
@@ -24,7 +21,7 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location',  function($
       url: '/breed'
     }).then(function(response) {
       console.log(response.data);
-      dogs.list = response.data;
+      allDogs.list = response.data;
 
     });
   }
@@ -67,8 +64,6 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location',  function($
 
     });
   }
-
-
 
   function getResult(userID){
     $http({
@@ -113,13 +108,6 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location',  function($
 
 }
 
-
-
-
-
-
-
-
   return {
     dogs: dogs,
     result: result,
@@ -133,7 +121,8 @@ PupApp.factory('PupFactory', ['$http', '$firebaseAuth', '$location',  function($
     myResults:myResults,
     getResult:getResult,
     users:users,
-    allPups:allPups
+    allPups:allPups,
+    allDogs: allDogs
 
   };
 }]);

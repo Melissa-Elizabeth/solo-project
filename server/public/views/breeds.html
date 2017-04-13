@@ -19,7 +19,7 @@ nav {
   height: 200px;
   width: 300px;
   margin-bottom: 60px;
-display: inline-grid;
+  display: inline-grid;
 }
 
 .resultPics {
@@ -31,11 +31,11 @@ display: inline-grid;
   -moz-box-shadow: 0px 0px 29px rgba(227, 84, 0, 0.6);
 }
 
-
-
 </style>
-<nav>
 
+
+
+<nav>
 
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -48,29 +48,29 @@ display: inline-grid;
   </div>
 
 
-
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li><a ng-href="#!home">Home</a></li>
 
       <li><a href="#">Resources</a></li>
-    <li><a ng-click="bc.login()" ng-href="#!profile/{{user.id}}">Profile</a></li>
+      <li><a ng-click="bc.login()" ng-href="#!profile/{{user.id}}">Profile</a></li>
 
-  </ul>
+    </ul>
 
 
     <ul class="nav navbar-nav navbar-right">
-    <li ng-click="bc.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</li><br>
-        <li>
-          {{pc.secretData}}
-        </li>
-</ul>
-    </div>
-    </nav>
+      <li ng-click="bc.logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</li><br>
+      <li>
+        {{pc.secretData}}
+      </li>
+    </ul>
+  </div>
+</nav>
 
-    <br><br>
-    <center>
-    <div ng-repeat="pup in bc.dogs.list">
+<br><br>
+<center>
+
+  <div ng-repeat="pup in bc.allDogs.list">
     <div class="col-sm-4">
       <div class="span4">
 
